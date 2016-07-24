@@ -44,8 +44,13 @@
   },
   "dependencies": {
     "eslint-plugin-react": "^5.2.2",
+    "font-awesome": "github:fortawesome/Font-Awesome",
+    "immutable": "^3.8.1",
+    "marked": "^0.3.5",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "react-router": "^2.5.2"
+    "react-draggable": "^2.1.2",
+    "react-router": "^2.5.2",
+    "react-textarea-autosize": "^4.0.4"
   }
 }
