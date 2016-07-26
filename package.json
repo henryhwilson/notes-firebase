@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node_modules/.bin/webpack-dev-server --inline --hot",
     "build": "WEBPACK_ENV=production node_modules/.bin/webpack --optimize-minimize --progress --color",
-    "deploy": "npm run build; surge -p . -d cs52-henrywilson-hw3.surge.sh"
+    "deploy": "npm run build; surge -p . -d henry-notes.surge.sh"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "eslint-plugin-react": "^5.2.2",
+    "firebase": "^3.2.0",
     "font-awesome": "github:fortawesome/Font-Awesome",
     "immutable": "^3.8.1",
     "marked": "^0.3.5",

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Immutable from 'immutable';
 import InputBar from './input_bar';
 import Note from './note';
+import * as firebase from '../firebase';
 
 class App extends Component {
   constructor(props) {
@@ -16,29 +17,32 @@ class App extends Component {
     this.updateNote = this.updateNote.bind(this);
   }
 
+  componentDidMount() {
+    console.log('Loading notes');
+    firebase.fetchNotes((notes) => {
+      this.setState({
+        notes: Immutable.Map(notes),
+      });
+    });
+  }
+
   createNote(title) {
-    const id = this.state.notes.size;
+    const y = 10 + this.state.notes.size * 100;
     const note = {
       title,
       text: '',
       x: 0,
-      y: 10 + id * 100,
+      y,
     };
-    this.setState({
-      notes: this.state.notes.set(id, note),
-    });
+    firebase.createNote(note);
   }
 
   deleteNote(id) {
-    this.setState({
-      notes: this.state.notes.delete(id),
-    });
+    firebase.deleteNote(id);
   }
 
   updateNote(id, fields) {
-    this.setState({
-      notes: this.state.notes.update(id, (n) => { return Object.assign({}, n, fields); }),
-    });
+    firebase.updateNote(id, fields);
   }
 
   render() {
